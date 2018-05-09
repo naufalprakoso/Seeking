@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Seeking</string>
+
+    <!--Title-->
+    <string name="titleCompanyRegistration">Company Registration</string>
+
+    <!--Hint-->
+    <string name="hint_company_name">Your company name....</string>
+    <string name="hint_password">Your password...</string>
+    <string name="hint_confirm_password">Confirm your password...</string>
+    <string name="hint_email">ex: naufal@njy.com</string>
+
+    <string name="company_name">Company Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+
+    <!--Validation-->
+    <string name="mustBeFilled">Must be filled</string>
 </resources>
