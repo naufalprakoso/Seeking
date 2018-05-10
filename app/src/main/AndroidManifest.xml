@@ -27,7 +27,9 @@
 
         <activity
             android:name=".CompanyaAddressActivity"
-            android:label="@string/title_activity_companya_address"></activity>
+            android:label="@string/title_activity_companya_address" />
+        <activity android:name=".UpdateCompanyProfileActivity" />
+        <activity android:name=".EditCompanyProfileActivity"></activity>
     </application>
 
 </manifest>

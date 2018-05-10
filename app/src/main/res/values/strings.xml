@@ -3,6 +3,7 @@
 
     <!--Title-->
     <string name="titleCompanyRegistration">Company Registration</string>
+    <string name="titleCompanyUpdateProfile">Update Company Profile</string>
 
     <!--Hint Company Registration-->
     <string name="hint_company_name">Your company name....</string>
