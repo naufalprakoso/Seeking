@@ -1,5 +1,6 @@
 package com.njy.seeking;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,7 +37,8 @@ public class UpdateCompanyProfileActivity extends AppCompatActivity implements V
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_edit_profile:
-                
+                Intent i = new Intent(getApplicationContext(), EditCompanyProfileActivity.class);
+                startActivity(i);
                 break;
         }
     }

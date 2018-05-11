@@ -29,7 +29,12 @@
             android:name=".CompanyaAddressActivity"
             android:label="@string/title_activity_companya_address" />
         <activity android:name=".UpdateCompanyProfileActivity" />
-        <activity android:name=".EditCompanyProfileActivity"></activity>
+        <activity android:name=".EditCompanyProfileActivity" />
+        <activity
+            android:name=".CompanyHomeActivity"
+            android:label="@string/title_activity_company_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CreateVacancyActivity"></activity>
     </application>
 
 </manifest>

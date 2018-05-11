@@ -28,4 +28,18 @@
     <!--Validation-->
     <string name="mustBeFilled">Must be filled</string>
     <string name="title_activity_companya_address">Map</string>
+    <string name="title_activity_company_home">CompanyHomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!--Employment Type-->
+    <string-array name="type_array">
+        <item>Part-time</item>
+        <item>Fulltime</item>
+        <item>Internship</item>
+    </string-array>
+    
 </resources>

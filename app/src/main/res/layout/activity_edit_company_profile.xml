@@ -27,6 +27,47 @@
             android:text="@string/find_office_address"/>
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/company_name"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16dp"
+            android:inputType="textPersonName"
+            android:id="@+id/edt_company_name"
+            android:hint="@string/hint_company_name"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16dp"
+            android:inputType="textEmailAddress"
+            android:id="@+id/edt_email"
+            android:hint="@string/hint_email"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16dp"
+            android:inputType="textPassword"
+            android:id="@+id/edt_password"
+            android:hint="@string/hint_password"/>
+
+        <TextView
             android:layout_marginTop="@dimen/dimen_16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,8 +114,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_register"
-            android:text="@string/register"
+            android:id="@+id/btn_edit_profile"
+            android:text="Edit Profile"
             android:layout_marginBottom="@dimen/dimen_16dp"/>
 
     </LinearLayout>
