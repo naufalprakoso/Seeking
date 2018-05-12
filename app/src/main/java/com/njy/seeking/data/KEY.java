@@ -1,5 +1,9 @@
 package com.njy.seeking.data;
 
+import android.widget.EditText;
+
+import com.njy.seeking.R;
+
 /**
  * Created by naufalprakoso on 09/05/18.
  */
@@ -40,4 +44,17 @@ public class KEY {
     public static final String COUNTRY_SEEKER_KEY = "SeekerCountry";
     public static final String EMAIL_SEEKER_KEY = "SeekerEmail";
     public static final String PASSWORD_SEEKER_KEY = "SeekerPassword";
+    public static final String CERTIFICATION_ID_SEEKER_KEY = "SeekerCertificationId";
+    public static final String CERTIFICATION_COMPANY_SEEKER_KEY = "SeekerCertificationCompany";
+    public static final String PHONE_SEEKER_KEY = "SeekerPhone";
+    public static final String WEBSITE_SEEKER_KEY = "SeekerWebsite";
+    public static final String LINKEDIN_SEEKER_KEY = "SeekerLinkedin";
+    public static final String GITHUB_SEEKER_KEY = "SeekerGithub";
+    public static final String BIRTHDAY_PLACE_SEEKER_KEY = "SeekerBirthdayPlace";
+    public static final String LAST_EDUCATION_SEEKER_KEY = "SeekerLastEducation";
+    public static final String BIRTHDAY_SEEKER_KEY = "SeekerBirthday";
+    public static final String INTERESTED_SEEKER_KEY = "SeekerInterested";
+    public static final String PROJECT_SEEKER_KEY = "SeekerProject";
+    public static final String WORK_PERIOD_SEEKER_KEY = "SeekerWorkPeriod";
+    public static final String LAST_COMPANY_SEEKER_KEY = "SeekerLastCompany";
 }

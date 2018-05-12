@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import com.njy.seeking.data.KEY;
 public class RegisterJobSeekerActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText edtName, edtPassword, edtConfirmPassword, edtProvince, edtCountry, edtEmail;
+    private Button btnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,9 @@ public class RegisterJobSeekerActivity extends AppCompatActivity implements View
         edtProvince = (EditText) findViewById(R.id.edt_province);
         edtCountry = (EditText) findViewById(R.id.edt_country);
         edtEmail = (EditText) findViewById(R.id.edt_email);
+        btnRegister = (Button) findViewById(R.id.btn_register);
+
+        btnRegister.setOnClickListener(this);
     }
 
     @Override

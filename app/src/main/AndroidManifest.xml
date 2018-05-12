@@ -40,7 +40,13 @@
         <activity android:name=".company.VacancyDetailActivity" />
         <activity android:name=".seeker.RegisterJobSeekerActivity" />
         <activity android:name=".seeker.CompleteSeekerActivity" />
-        <activity android:name=".seeker.CompleteSeekerCertificationActivity"></activity>
+        <activity android:name=".seeker.CompleteSeekerCertificationActivity" />
+        <activity android:name=".seeker.CompleteSeekerWorkActivity" />
+        <activity android:name=".seeker.LoginJobSeekerActivity" />
+        <activity
+            android:name=".seeker.SeekerHomeActivity"
+            android:label="@string/title_activity_seeker_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

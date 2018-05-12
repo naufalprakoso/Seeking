@@ -41,5 +41,6 @@
         <item>Fulltime</item>
         <item>Internship</item>
     </string-array>
+    <string name="title_activity_seeker_home">SeekerHomeActivity</string>
 
 </resources>
