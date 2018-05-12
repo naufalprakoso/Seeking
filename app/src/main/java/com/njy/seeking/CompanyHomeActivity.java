@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,7 +19,12 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.njy.seeking.adapter.VacancyAdapter;
 import com.njy.seeking.data.KEY;
+import com.njy.seeking.data.VacancyData;
+import com.njy.seeking.model.Vacancy;
+
+import java.util.ArrayList;
 
 public class CompanyHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,6 +37,9 @@ public class CompanyHomeActivity extends AppCompatActivity
     private TextView txtUserName, txtUserEmail;
 
     String userName, userEmail;
+
+    private RecyclerView recyclerView;
+    ArrayList<Vacancy> vacancies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +86,18 @@ public class CompanyHomeActivity extends AppCompatActivity
             txtUserName.setText(userName);
             txtUserEmail.setText(userEmail);
         }
+
+        recyclerView = (RecyclerView) findViewById(R.id.rv_list);
+        recyclerView.setHasFixedSize(true);
+
+        vacancies = new ArrayList<>();
+        vacancies.addAll(VacancyData.getList());
+
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        VacancyAdapter vacancyAdapter = new VacancyAdapter(this);
+        vacancyAdapter.setList(vacancies);
+
+        recyclerView.setAdapter(vacancyAdapter);
     }
 
     @Override

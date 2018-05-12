@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dimen_16dp"
-            android:id="@+id/edt_password"
+            android:id="@+id/edt_seat_left"
             android:hint="Seats left..."/>
 
         <TextView
@@ -145,6 +145,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_create"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
             android:text="Create Job Vacancy"/>
 
     </LinearLayout>

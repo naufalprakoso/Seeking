@@ -18,6 +18,19 @@ public class KEY {
     public static final String IMAGE_COMPANY_KEY = "ImageCompanyKey";
 
     public static final String ROLE_KEY = "RoleKey";
+    public static final String DATA_KEY = "DataKey";
 
     public static final String FIRST_LOGIN_KEY = "FirstLoginKey";
+
+    // Vacancy Key
+    public static final String POSITION_KEY = "PositionKey";
+    public static final String TYPE_KEY = "TypeKey";
+    public static final String LOCATION_KEY = "LocationKey";
+    public static final String SEAT_LEFT_KEY = "SeatLeftKey";
+    public static final String SALARY_KEY = "SalaryKey";
+    public static final String EXPERIENCE_KEY = "ExperienceKey";
+    public static final String LANGUAGE_KEY = "LanguageKey";
+    public static final String CERTIFICATION_KEY = "CertificationKey";
+    public static final String ADDITIONAL_KEY = "AdditionalKey";
+    public static final String JOB_DESCRIPTION_KEY = "JobDescriptionKey";
 }
