@@ -1,52 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/dimen_16dp"
-    tools:context="com.njy.seeking.MainActivity">
+    android:background="#2979FF"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="130dp"
+                android:layout_marginBottom="60dp"
+                android:src="@drawable/sieve"/>
+
+        </RelativeLayout>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="What are you?"
-            android:textSize="22sp"
-            android:textColor="@android:color/black"/>
-
-        <Button
-            android:layout_marginTop="@dimen/dimen_16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Job Vacancy"
-            android:textColor="@android:color/white"
-            android:background="@color/colorPrimary"
-            android:id="@+id/btn_company"/>
 
-        <TextView
-            android:layout_marginTop="@dimen/dimen_16dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="OR"/>
+            android:text="Login As?"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"/>
 
-        <Button
-            android:layout_marginTop="@dimen/dimen_16dp"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Job Seeker"
-            android:textColor="@android:color/white"
-            android:background="@color/colorPrimary"
-            android:id="@+id/btn_seeker"/>
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="#1565C0"
+                android:id="@+id/btn_seeker">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/job_seeker"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="Job Seeker"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"/>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="95dp" />
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="#1565C0"
+                android:id="@+id/btn_company">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/company"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="Company"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

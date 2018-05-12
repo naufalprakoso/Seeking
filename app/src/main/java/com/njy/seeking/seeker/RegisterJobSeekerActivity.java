@@ -21,6 +21,8 @@ public class RegisterJobSeekerActivity extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_job_seeker);
 
+        setTitle("Job Seeker Registration");
+
         edtName = (EditText) findViewById(R.id.edt_seeker_name);
         edtPassword = (EditText) findViewById(R.id.edt_password);
         edtConfirmPassword = (EditText) findViewById(R.id.edt_confirm_password);

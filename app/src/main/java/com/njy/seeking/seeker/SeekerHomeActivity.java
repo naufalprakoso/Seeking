@@ -1,8 +1,16 @@
 package com.njy.seeking.seeker;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,11 +20,46 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.njy.seeking.MainActivity;
 import com.njy.seeking.R;
+import com.njy.seeking.adapter.VacancyAdapter;
+import com.njy.seeking.adapter.VacancySeekerAdapter;
+import com.njy.seeking.company.CompanyHomeActivity;
+import com.njy.seeking.company.LoginCompanyActivity;
+import com.njy.seeking.data.KEY;
+import com.njy.seeking.model.Vacancy;
+
+import java.util.ArrayList;
 
 public class SeekerHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+
+    boolean isFirstTime = false;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor mEdit;
+    String companyName;
+
+    private ImageView imgProfile;
+    private TextView txtUserName, txtUserEmail;
+
+    String userName, userEmail;
+
+    private RecyclerView recyclerView;
+    ArrayList<Vacancy> vacancies;
+
+    DatabaseReference databaseReference;
+    ProgressDialog progressDialog;
+    VacancySeekerAdapter adapter;
+
+    DialogInterface.OnClickListener dialogClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +85,82 @@ public class SeekerHomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        sharedPreferences = getSharedPreferences(KEY.SEEKING_KEY, Context.MODE_PRIVATE);
+        mEdit = sharedPreferences.edit();
+        isFirstTime = sharedPreferences.getBoolean(KEY.FIRST_LOGIN_KEY, false);
+
+        companyName = sharedPreferences.getString(KEY.NAME_COMPANY_KEY, null);
+
+        userName = sharedPreferences.getString(KEY.NAME_SEEKER_KEY, null);
+        userEmail = sharedPreferences.getString(KEY.EMAIL_SEEKER_KEY, null);
+
+        View headerView = navigationView.getHeaderView(0);
+
+        imgProfile = (ImageView) headerView.findViewById(R.id.img_user);
+        txtUserName = (TextView) headerView.findViewById(R.id.txt_user_name);
+        txtUserEmail = (TextView) headerView.findViewById(R.id.txt_user_email);
+
+        imgProfile.setOnClickListener(this);
+
+        if (!isFirstTime){
+            Intent i = new Intent(getApplicationContext(), LoginJobSeekerActivity.class);
+            startActivity(i);
+        }else{
+            txtUserName.setText(userName);
+            txtUserEmail.setText(userEmail);
+        }
+
+        recyclerView = (RecyclerView) findViewById(R.id.rv_list);
+        recyclerView.setHasFixedSize(true);
+
+        vacancies = new ArrayList<>();
+
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait....");
+        progressDialog.show();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.child("company").child(companyName + "").getChildren()){
+                    Vacancy vacancy  = dataSnapshot.getValue(Vacancy.class);
+                    vacancies.add(vacancy);
+                }
+
+                adapter = new VacancySeekerAdapter(SeekerHomeActivity.this, vacancies);
+                recyclerView.setAdapter(adapter);
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                progressDialog.dismiss();
+            }
+        });
+
+        dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        mEdit.putString(KEY.ROLE_KEY, null);
+                        mEdit.putBoolean(KEY.FIRST_LOGIN_KEY, false);
+                        mEdit.commit();
+
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(i);
+                        finish();
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
     }
 
     @Override
@@ -50,7 +169,7 @@ public class SeekerHomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            finishAffinity();
         }
     }
 
@@ -83,7 +202,9 @@ public class SeekerHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_help) {
 
         } else if (id == R.id.nav_logout) {
-
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Are you sure to logout?").setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

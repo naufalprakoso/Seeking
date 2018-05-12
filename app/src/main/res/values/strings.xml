@@ -41,6 +41,16 @@
         <item>Fulltime</item>
         <item>Internship</item>
     </string-array>
-    <string name="title_activity_seeker_home">SeekerHomeActivity</string>
+
+    <!--Certification Company-->
+    <string-array name="certification_company_array">
+        <item></item>
+        <item>Dicoding</item>
+        <item>Udacity</item>
+        <item>Udemy</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="title_activity_seeker_home">Job Seeker Home</string>
 
 </resources>

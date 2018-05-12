@@ -30,8 +30,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dimen_16dp"
+            android:inputType="none"
             android:id="@+id/edt_birthday"
-            android:hint="Your birthday..."/>
+            android:hint="Get your birthday..."/>
 
         <TextView
             android:layout_marginTop="@dimen/dimen_16dp"
@@ -99,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dimen_16dp"
-            android:hint="Ex: www.linkedin.com/in/naufalprakoso"/>
+            android:hint="Ex: www.linkedin.com/in/naufal-prakoso"/>
 
         <TextView
             android:layout_marginTop="@dimen/dimen_16dp"

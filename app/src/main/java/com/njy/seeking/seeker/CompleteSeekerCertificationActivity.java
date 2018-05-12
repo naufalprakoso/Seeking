@@ -27,6 +27,8 @@ public class CompleteSeekerCertificationActivity extends AppCompatActivity imple
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete_seeker_certification);
 
+        setTitle("Job Seeker Registration");
+
         btnRegister = (Button) findViewById(R.id.btn_register);
         spinnerCertificationCompany = (Spinner) findViewById(R.id.spinner_certification_company);
         edtCertificationId = (EditText) findViewById(R.id.edt_certification_account_id);
@@ -35,7 +37,7 @@ public class CompleteSeekerCertificationActivity extends AppCompatActivity imple
 
         ArrayAdapter<CharSequence> adapterType = ArrayAdapter.createFromResource(
                 this,
-                R.array.type_array,
+                R.array.certification_company_array,
                 android.R.layout.simple_spinner_item);
         adapterType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCertificationCompany.setAdapter(adapterType);

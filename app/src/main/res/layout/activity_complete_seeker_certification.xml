@@ -58,7 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Note: You can blank this form if you not gave any certification"/>
+            android:text="Note: You can blank this form if you not have any certification"/>
 
     </LinearLayout>
 

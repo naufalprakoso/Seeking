@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/company_name"/>
+            android:text="Name"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:padding="@dimen/dimen_16dp"
             android:inputType="textPersonName"
             android:id="@+id/edt_seeker_name"
-            android:hint="@string/hint_company_name"/>
+            android:hint="Your name..."/>
 
         <TextView
             android:layout_marginTop="@dimen/dimen_16dp"
@@ -65,7 +65,7 @@
             android:padding="@dimen/dimen_16dp"
             android:inputType="textEmailAddress"
             android:id="@+id/edt_email"
-            android:hint="@string/hint_email"/>
+            android:hint="ex: naufalprakoso24@gmail.com"/>
 
         <TextView
             android:layout_marginTop="@dimen/dimen_16dp"

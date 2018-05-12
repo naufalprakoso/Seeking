@@ -63,7 +63,7 @@ public class LoginJobSeekerActivity extends AppCompatActivity implements View.On
                     mEdit.putString(KEY.ROLE_KEY, "Seeker");
                     mEdit.commit();
 
-                    Intent i = new Intent(getApplicationContext(), CompanyHomeActivity.class);
+                    Intent i = new Intent(getApplicationContext(), SeekerHomeActivity.class);
                     startActivity(i);
                     finish();
 

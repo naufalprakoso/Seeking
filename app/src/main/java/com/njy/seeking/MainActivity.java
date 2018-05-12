@@ -6,15 +6,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.njy.seeking.R;
 import com.njy.seeking.company.CompanyHomeActivity;
 import com.njy.seeking.company.LoginCompanyActivity;
 import com.njy.seeking.data.KEY;
+import com.njy.seeking.seeker.LoginJobSeekerActivity;
+import com.njy.seeking.seeker.SeekerHomeActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnCompany, btnSeeker;
+    private LinearLayout btnCompany, btnSeeker;
     SharedPreferences sharedPreferences;
     String roleLogin;
     boolean isFirstTime;
@@ -24,8 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnCompany = (Button) findViewById(R.id.btn_company);
-        btnSeeker = (Button) findViewById(R.id.btn_seeker);
+        btnCompany = (LinearLayout) findViewById(R.id.btn_company);
+        btnSeeker = (LinearLayout) findViewById(R.id.btn_seeker);
 
         btnCompany.setOnClickListener(this);
         btnSeeker.setOnClickListener(this);
@@ -38,8 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent i = new Intent(getApplicationContext(), CompanyHomeActivity.class);
             startActivity(i);
         }else if (isFirstTime && roleLogin.equals("Seeker")){
-//            Intent i = new Intent(getApplicationContext(), CompanyHomeActivity.class);
-//            startActivity(i);
+            Intent i = new Intent(getApplicationContext(), SeekerHomeActivity.class);
+            startActivity(i);
         }
     }
 
@@ -51,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
             case R.id.btn_seeker:
+                Intent ia = new Intent(getApplicationContext(), LoginJobSeekerActivity.class);
+                startActivity(ia);
                 break;
         }
     }

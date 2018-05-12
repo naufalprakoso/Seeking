@@ -36,6 +36,8 @@ public class CompleteSeekerActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complete_seeker);
 
+        setTitle("Job Seeker Registration");
+
         btnRegister = (Button) findViewById(R.id.btn_register);
         edtPhone = (EditText) findViewById(R.id.edt_phone);
         edtWebsite = (EditText) findViewById(R.id.edt_website);
