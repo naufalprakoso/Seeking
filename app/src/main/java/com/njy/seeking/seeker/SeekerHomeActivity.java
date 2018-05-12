@@ -9,6 +9,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -28,8 +31,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.njy.seeking.CertificationListFragment;
 import com.njy.seeking.MainActivity;
 import com.njy.seeking.R;
+import com.njy.seeking.SeekerListVacancyFragment;
 import com.njy.seeking.adapter.VacancyAdapter;
 import com.njy.seeking.adapter.VacancySeekerAdapter;
 import com.njy.seeking.company.CompanyHomeActivity;
@@ -45,19 +50,11 @@ public class SeekerHomeActivity extends AppCompatActivity
     boolean isFirstTime = false;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor mEdit;
-    String companyName;
 
     private ImageView imgProfile;
     private TextView txtUserName, txtUserEmail;
 
     String userName, userEmail;
-
-    private RecyclerView recyclerView;
-    ArrayList<Vacancy> vacancies;
-
-    DatabaseReference databaseReference;
-    ProgressDialog progressDialog;
-    VacancySeekerAdapter adapter;
 
     DialogInterface.OnClickListener dialogClickListener;
 
@@ -77,6 +74,9 @@ public class SeekerHomeActivity extends AppCompatActivity
 //            }
 //        });
 
+        SeekerListVacancyFragment seekerListVacancyFragment = new SeekerListVacancyFragment();
+        openFragment(seekerListVacancyFragment);
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -89,8 +89,6 @@ public class SeekerHomeActivity extends AppCompatActivity
         sharedPreferences = getSharedPreferences(KEY.SEEKING_KEY, Context.MODE_PRIVATE);
         mEdit = sharedPreferences.edit();
         isFirstTime = sharedPreferences.getBoolean(KEY.FIRST_LOGIN_KEY, false);
-
-        companyName = sharedPreferences.getString(KEY.NAME_COMPANY_KEY, null);
 
         userName = sharedPreferences.getString(KEY.NAME_SEEKER_KEY, null);
         userEmail = sharedPreferences.getString(KEY.EMAIL_SEEKER_KEY, null);
@@ -110,37 +108,6 @@ public class SeekerHomeActivity extends AppCompatActivity
             txtUserName.setText(userName);
             txtUserEmail.setText(userEmail);
         }
-
-        recyclerView = (RecyclerView) findViewById(R.id.rv_list);
-        recyclerView.setHasFixedSize(true);
-
-        vacancies = new ArrayList<>();
-
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Please wait....");
-        progressDialog.show();
-
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.child("company").child(companyName + "").getChildren()){
-                    Vacancy vacancy  = dataSnapshot.getValue(Vacancy.class);
-                    vacancies.add(vacancy);
-                }
-
-                adapter = new VacancySeekerAdapter(SeekerHomeActivity.this, vacancies);
-                recyclerView.setAdapter(adapter);
-                progressDialog.dismiss();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                progressDialog.dismiss();
-            }
-        });
 
         dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
@@ -197,9 +164,11 @@ public class SeekerHomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_list_vacancy) {
-
+            SeekerListVacancyFragment seekerListVacancyFragment = new SeekerListVacancyFragment();
+            openFragment(seekerListVacancyFragment);
         } else if (id == R.id.nav_certification) {
-
+            CertificationListFragment certificationListFragment = new CertificationListFragment();
+            openFragment(certificationListFragment);
         } else if (id == R.id.nav_help) {
 
         } else if (id == R.id.nav_logout) {
@@ -216,5 +185,13 @@ public class SeekerHomeActivity extends AppCompatActivity
     @Override
     public void onClick(View v) {
 
+    }
+
+    private void openFragment(final Fragment fragment)   {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.frame_content, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

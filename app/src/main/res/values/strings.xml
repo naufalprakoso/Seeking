@@ -54,4 +54,7 @@
     <string name="title_activity_seeker_home">Job Seeker Home</string>
     <string name="title_activity_vacancy_detail_seeker">VacancyDetailSeekerActivity</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
