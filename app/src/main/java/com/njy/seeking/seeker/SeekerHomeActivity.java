@@ -68,14 +68,14 @@ public class SeekerHomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -149,6 +149,7 @@ public class SeekerHomeActivity extends AppCompatActivity
                     case DialogInterface.BUTTON_POSITIVE:
                         mEdit.putString(KEY.ROLE_KEY, null);
                         mEdit.putBoolean(KEY.FIRST_LOGIN_KEY, false);
+                        mEdit.putBoolean(KEY.SUBMITED_KEY, false);
                         mEdit.commit();
 
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);

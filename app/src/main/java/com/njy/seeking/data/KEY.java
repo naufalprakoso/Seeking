@@ -23,8 +23,11 @@ public class KEY {
 
     public static final String ROLE_KEY = "RoleKey";
     public static final String DATA_KEY = "DataKey";
+    public static final String DATA_APPLICANT_KEY = "DataApplicantKey";
 
     public static final String FIRST_LOGIN_KEY = "FirstLoginKey";
+
+    public static final String SUBMITED_KEY = "SubmitedKey";
 
     // Vacancy Key
     public static final String POSITION_KEY = "PositionKey";
@@ -37,6 +40,8 @@ public class KEY {
     public static final String CERTIFICATION_KEY = "CertificationKey";
     public static final String ADDITIONAL_KEY = "AdditionalKey";
     public static final String JOB_DESCRIPTION_KEY = "JobDescriptionKey";
+    public static final String VACANCY_ID_KEY = "VacancyIdKey";
+    public static final String NAME_GET_COMPANY_KEY = "NameGetCompanyKey";
 
 //    Registration Job Seeker
     public static final String NAME_SEEKER_KEY = "SeekerName";

@@ -6,7 +6,24 @@ package com.njy.seeking.model;
 
 public class Vacancy {
     private String position, location, seat, salary,
-            experience, language, certification, additional, description, type;
+            experience, language, certification, additional, description, type,
+            vacancyid, name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getVacancyid() {
+        return vacancyid;
+    }
+
+    public void setVacancyid(String vacancyid) {
+        this.vacancyid = vacancyid;
+    }
 
     public String getPosition() {
         return position;

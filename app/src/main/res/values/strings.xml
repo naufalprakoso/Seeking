@@ -52,5 +52,6 @@
     </string-array>
 
     <string name="title_activity_seeker_home">Job Seeker Home</string>
+    <string name="title_activity_vacancy_detail_seeker">VacancyDetailSeekerActivity</string>
 
 </resources>

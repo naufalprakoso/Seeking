@@ -11,11 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.njy.seeking.R;
-import com.njy.seeking.company.VacancyDetailActivity;
 import com.njy.seeking.data.KEY;
 import com.njy.seeking.model.Vacancy;
+import com.njy.seeking.seeker.VacancyDetailSeekerActivity;
 
 import java.util.ArrayList;
 
@@ -61,7 +60,7 @@ public class VacancySeekerAdapter extends RecyclerView.Adapter<VacancySeekerAdap
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, VacancyDetailActivity.class);
+                Intent i = new Intent(context, VacancyDetailSeekerActivity.class);
                 i.putExtra(KEY.POSITION_KEY, getVacancies().get(position).getPosition());
                 i.putExtra(KEY.TYPE_KEY, getVacancies().get(position).getType());
                 i.putExtra(KEY.LOCATION_KEY, getVacancies().get(position).getLocation());
@@ -72,6 +71,8 @@ public class VacancySeekerAdapter extends RecyclerView.Adapter<VacancySeekerAdap
                 i.putExtra(KEY.CERTIFICATION_KEY, getVacancies().get(position).getCertification());
                 i.putExtra(KEY.ADDITIONAL_KEY, getVacancies().get(position).getAdditional());
                 i.putExtra(KEY.JOB_DESCRIPTION_KEY, getVacancies().get(position).getDescription());
+                i.putExtra(KEY.VACANCY_ID_KEY, getVacancies().get(position).getVacancyid());
+                i.putExtra(KEY.NAME_GET_COMPANY_KEY, getVacancies().get(position).getName());
                 context.startActivity(i);
             }
         });

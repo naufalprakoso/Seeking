@@ -47,7 +47,10 @@
             android:name=".seeker.SeekerHomeActivity"
             android:label="@string/title_activity_seeker_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SeekerVacancyDetailActivity"></activity>
+        <activity
+            android:name=".seeker.VacancyDetailSeekerActivity"
+            android:label="@string/title_activity_vacancy_detail_seeker"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -88,6 +88,8 @@ public class CreateVacancyActivity extends AppCompatActivity implements View.OnC
 
                 databaseReference = firebaseDatabase.getReference();
 
+                databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("name").setValue(getName + "");
+                databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("vacancyid").setValue("vacancy" + getDataKey);
                 databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("position").setValue(position);
                 databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("type").setValue(type);
                 databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("location").setValue(location);
