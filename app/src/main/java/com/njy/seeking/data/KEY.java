@@ -33,4 +33,11 @@ public class KEY {
     public static final String CERTIFICATION_KEY = "CertificationKey";
     public static final String ADDITIONAL_KEY = "AdditionalKey";
     public static final String JOB_DESCRIPTION_KEY = "JobDescriptionKey";
+
+//    Registration Job Seeker
+    public static final String NAME_SEEKER_KEY = "SeekerName";
+    public static final String PROVINCE_SEEKER_KEY = "SeekerProvince";
+    public static final String COUNTRY_SEEKER_KEY = "SeekerCountry";
+    public static final String EMAIL_SEEKER_KEY = "SeekerEmail";
+    public static final String PASSWORD_SEEKER_KEY = "SeekerPassword";
 }

@@ -1,10 +1,11 @@
-package com.njy.seeking;
+package com.njy.seeking.company;
 
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.njy.seeking.R;
 import com.njy.seeking.data.KEY;
 
 public class VacancyDetailActivity extends AppCompatActivity {

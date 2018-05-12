@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/dimen_16dp"
-    tools:context="com.njy.seeking.UpdateCompanyProfileActivity">
+    tools:context="com.njy.seeking.company.UpdateCompanyProfileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

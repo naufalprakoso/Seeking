@@ -1,4 +1,4 @@
-package com.njy.seeking;
+package com.njy.seeking.company;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -7,9 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -27,9 +25,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.njy.seeking.MainActivity;
+import com.njy.seeking.R;
 import com.njy.seeking.adapter.VacancyAdapter;
 import com.njy.seeking.data.KEY;
-import com.njy.seeking.data.VacancyData;
 import com.njy.seeking.model.Vacancy;
 
 import java.util.ArrayList;
@@ -119,7 +118,7 @@ public class CompanyHomeActivity extends AppCompatActivity
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.child(companyName + "").getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.child("company").child(companyName + "").getChildren()){
                     Vacancy vacancy  = dataSnapshot.getValue(Vacancy.class);
                     vacancies.add(vacancy);
                 }

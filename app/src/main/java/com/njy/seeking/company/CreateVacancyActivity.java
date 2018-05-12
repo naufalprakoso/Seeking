@@ -1,4 +1,4 @@
-package com.njy.seeking;
+package com.njy.seeking.company;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.njy.seeking.R;
 import com.njy.seeking.data.KEY;
 
 public class CreateVacancyActivity extends AppCompatActivity implements View.OnClickListener{
@@ -87,16 +88,16 @@ public class CreateVacancyActivity extends AppCompatActivity implements View.OnC
 
                 databaseReference = firebaseDatabase.getReference();
 
-                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("position").setValue(position);
-                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("type").setValue(type);
-                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("location").setValue(location);
-                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("seat").setValue(seatLeft);
-                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("salary").setValue(salary);
-                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("experience").setValue(experience);
-                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("language").setValue(language);
-                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("certification").setValue(certification);
-                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("additional").setValue(additional);
-                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("description").setValue(jobDescription);
+                databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("position").setValue(position);
+                databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("type").setValue(type);
+                databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("location").setValue(location);
+                databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("seat").setValue(seatLeft);
+                databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("salary").setValue(salary);
+                databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("experience").setValue(experience);
+                databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("language").setValue(language);
+                databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("certification").setValue(certification);
+                databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("additional").setValue(additional);
+                databaseReference.child("company").child(getName + "").child("vacancy" + getDataKey).child("description").setValue(jobDescription);
 
                 getDataKey += 1;
                 mEdit.putInt(KEY.DATA_KEY, getDataKey);

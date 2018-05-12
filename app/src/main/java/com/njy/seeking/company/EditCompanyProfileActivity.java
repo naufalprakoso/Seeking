@@ -1,4 +1,4 @@
-package com.njy.seeking;
+package com.njy.seeking.company;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.njy.seeking.R;
 import com.njy.seeking.data.KEY;
 
 public class EditCompanyProfileActivity extends AppCompatActivity implements View.OnClickListener{

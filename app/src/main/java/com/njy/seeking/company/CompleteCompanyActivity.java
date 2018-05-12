@@ -1,4 +1,4 @@
-package com.njy.seeking;
+package com.njy.seeking.company;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.njy.seeking.R;
+import com.njy.seeking.company.CompanyaAddressActivity;
+import com.njy.seeking.company.LoginCompanyActivity;
 import com.njy.seeking.data.KEY;
 
 import java.io.FileNotFoundException;

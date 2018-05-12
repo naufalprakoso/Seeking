@@ -1,4 +1,4 @@
-package com.njy.seeking;
+package com.njy.seeking.company;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;

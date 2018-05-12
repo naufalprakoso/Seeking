@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/dimen_16dp"
-    tools:context="com.njy.seeking.RegisterCompanyActivity">
+    tools:context="com.njy.seeking.company.RegisterCompanyActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

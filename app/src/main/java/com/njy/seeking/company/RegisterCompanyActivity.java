@@ -1,4 +1,4 @@
-package com.njy.seeking;
+package com.njy.seeking.company;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.njy.seeking.R;
 import com.njy.seeking.data.KEY;
 
 public class RegisterCompanyActivity extends AppCompatActivity implements View.OnClickListener{

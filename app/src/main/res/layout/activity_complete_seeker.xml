@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/dimen_16dp"
-    tools:context="com.njy.seeking.company.EditCompanyProfileActivity">
+    tools:context="com.njy.seeking.seeker.CompleteSeekerActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <ImageView
@@ -19,103 +20,108 @@
             android:src="@drawable/addimage"
             android:layout_gravity="center"/>
 
-        <Button
-            android:id="@+id/btn_find_address"
-            android:layout_marginTop="@dimen/dimen_16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/find_office_address"/>
-
         <TextView
+            android:layout_marginTop="@dimen/dimen_16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/company_name"/>
+            android:text="Birthday"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dimen_16dp"
-            android:inputType="textPersonName"
-            android:id="@+id/edt_company_name"
-            android:hint="@string/hint_company_name"/>
+            android:id="@+id/edt_birthday"
+            android:hint="Your birthday..."/>
 
         <TextView
             android:layout_marginTop="@dimen/dimen_16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/email"/>
+            android:text="Birthday Place"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dimen_16dp"
-            android:inputType="textEmailAddress"
-            android:id="@+id/edt_email"
-            android:hint="@string/hint_email"/>
+            android:id="@+id/edt_birthday_place"
+            android:hint="Your birthday place..."/>
 
         <TextView
             android:layout_marginTop="@dimen/dimen_16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/password"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/dimen_16dp"
-            android:inputType="textPassword"
-            android:id="@+id/edt_password"
-            android:hint="@string/hint_password"/>
-
-        <TextView
-            android:layout_marginTop="@dimen/dimen_16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/phone_number"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/dimen_16dp"
-            android:inputType="phone"
-            android:id="@+id/edt_phone"
-            android:hint="@string/hint_company_phone_number"/>
-
-        <TextView
-            android:layout_marginTop="@dimen/dimen_16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/website"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/dimen_16dp"
-            android:inputType="textUri"
-            android:id="@+id/edt_website"
-            android:hint="@string/hint_company_website"/>
-
-        <TextView
-            android:layout_marginTop="@dimen/dimen_16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hint_company_description_history"/>
+            android:text="Last Education"/>
 
         <EditText
             android:id="@+id/edt_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dimen_16dp"
-            android:inputType="textMultiLine"
-            android:maxLines="4"
-            android:lines="2"
-            android:hint="@string/hint_company_description"/>
+            android:hint="Your last education..."/>
+
+        <TextView
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"/>
+
+        <EditText
+            android:id="@+id/edt_phone"
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16dp"
+            android:hint="Your phone number..."/>
+
+        <TextView
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GitHub Profile"/>
+
+        <EditText
+            android:id="@+id/edt_github"
+            android:inputType="textUri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16dp"
+            android:hint="Ex: www.github.com/naufalprakoso"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LinkedIn Profile"/>
+
+        <EditText
+            android:id="@+id/edt_linkedin"
+            android:inputType="textUri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16dp"
+            android:hint="Ex: www.linkedin.com/in/naufalprakoso"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Website"/>
+
+        <EditText
+            android:id="@+id/edt_website"
+            android:inputType="textUri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16dp"
+            android:hint="Your website profile..."/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_edit_profile"
-            android:text="Edit Profile"
+            android:id="@+id/btn_register"
+            android:text="Next"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
             android:layout_marginBottom="@dimen/dimen_16dp"/>
 
     </LinearLayout>

@@ -3,7 +3,7 @@
     package="com.njy.seeking">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -19,25 +19,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterCompanyActivity" />
-        <activity android:name=".CompleteCompanyActivity" />
+        <activity android:name=".company.RegisterCompanyActivity" />
+        <activity android:name=".company.CompleteCompanyActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".CompanyaAddressActivity"
+            android:name=".company.CompanyaAddressActivity"
             android:label="@string/title_activity_companya_address" />
-        <activity android:name=".UpdateCompanyProfileActivity" />
-        <activity android:name=".EditCompanyProfileActivity" />
+        <activity android:name=".company.UpdateCompanyProfileActivity" />
+        <activity android:name=".company.EditCompanyProfileActivity" />
         <activity
-            android:name=".CompanyHomeActivity"
+            android:name=".company.CompanyHomeActivity"
             android:label="@string/title_activity_company_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CreateVacancyActivity" />
-        <activity android:name=".LoginCompanyActivity" />
-        <activity android:name=".VacancyDetailActivity"></activity>
+        <activity android:name=".company.CreateVacancyActivity" />
+        <activity android:name=".company.LoginCompanyActivity" />
+        <activity android:name=".company.VacancyDetailActivity" />
+        <activity android:name=".seeker.RegisterJobSeekerActivity" />
+        <activity android:name=".seeker.CompleteSeekerActivity" />
+        <activity android:name=".seeker.CompleteSeekerCertificationActivity"></activity>
     </application>
 
 </manifest>

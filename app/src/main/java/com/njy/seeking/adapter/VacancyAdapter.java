@@ -10,16 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.FirebaseDatabase;
 import com.njy.seeking.R;
-import com.njy.seeking.VacancyDetailActivity;
+import com.njy.seeking.company.VacancyDetailActivity;
 import com.njy.seeking.data.KEY;
 import com.njy.seeking.model.Vacancy;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by naufalprakoso on 12/05/18.
