@@ -1,5 +1,7 @@
 package com.njy.seeking;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,6 +22,11 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.njy.seeking.adapter.VacancyAdapter;
 import com.njy.seeking.data.KEY;
 import com.njy.seeking.data.VacancyData;
@@ -27,11 +35,12 @@ import com.njy.seeking.model.Vacancy;
 import java.util.ArrayList;
 
 public class CompanyHomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     boolean isFirstTime = false;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor mEdit;
+    String companyName;
 
     private ImageView imgProfile;
     private TextView txtUserName, txtUserEmail;
@@ -40,6 +49,10 @@ public class CompanyHomeActivity extends AppCompatActivity
 
     private RecyclerView recyclerView;
     ArrayList<Vacancy> vacancies;
+
+    DatabaseReference databaseReference;
+    ProgressDialog progressDialog;
+    VacancyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +79,11 @@ public class CompanyHomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        sharedPreferences = getSharedPreferences(KEY.SEEKING_KEY, MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(KEY.SEEKING_KEY, Context.MODE_PRIVATE);
         mEdit = sharedPreferences.edit();
         isFirstTime = sharedPreferences.getBoolean(KEY.FIRST_LOGIN_KEY, false);
+
+        companyName = sharedPreferences.getString(KEY.NAME_COMPANY_KEY, null);
 
         userName = sharedPreferences.getString(KEY.NAME_COMPANY_KEY, null);
         userEmail = sharedPreferences.getString(KEY.EMAIL_COMPANY_KEY, null);
@@ -78,6 +93,8 @@ public class CompanyHomeActivity extends AppCompatActivity
         imgProfile = (ImageView) headerView.findViewById(R.id.img_user);
         txtUserName = (TextView) headerView.findViewById(R.id.txt_user_name);
         txtUserEmail = (TextView) headerView.findViewById(R.id.txt_user_email);
+
+        imgProfile.setOnClickListener(this);
 
         if (!isFirstTime){
             Intent i = new Intent(getApplicationContext(), LoginCompanyActivity.class);
@@ -91,13 +108,37 @@ public class CompanyHomeActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
 
         vacancies = new ArrayList<>();
-        vacancies.addAll(VacancyData.getList());
+//        vacancies.addAll(VacancyData.getList());
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        VacancyAdapter vacancyAdapter = new VacancyAdapter(this);
-        vacancyAdapter.setList(vacancies);
+//        VacancyAdapter vacancyAdapter = new VacancyAdapter(this);
+//        vacancyAdapter.setList(vacancies);
 
-        recyclerView.setAdapter(vacancyAdapter);
+//        recyclerView.setAdapter(vacancyAdapter);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait....");
+        progressDialog.show();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.child(companyName + "").getChildren()){
+                    Vacancy vacancy  = dataSnapshot.getValue(Vacancy.class);
+                    vacancies.add(vacancy);
+                }
+
+                adapter = new VacancyAdapter(CompanyHomeActivity.this, vacancies);
+                recyclerView.setAdapter(adapter);
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                progressDialog.dismiss();
+            }
+        });
     }
 
     @Override
@@ -148,5 +189,15 @@ public class CompanyHomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.img_user:
+                Intent i = new Intent(getApplicationContext(), UpdateCompanyProfileActivity.class);
+                startActivity(i);
+                break;
+        }
     }
 }

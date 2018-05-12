@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.FirebaseDatabase;
 import com.njy.seeking.R;
 import com.njy.seeking.VacancyDetailActivity;
 import com.njy.seeking.data.KEY;
@@ -17,6 +19,7 @@ import com.njy.seeking.model.Vacancy;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by naufalprakoso on 12/05/18.
@@ -37,6 +40,11 @@ public class VacancyAdapter extends RecyclerView.Adapter<VacancyAdapter.ViewHold
 
     public VacancyAdapter(Context context) {
 
+        this.context = context;
+    }
+
+    public VacancyAdapter(Context context, ArrayList<Vacancy> tempList){
+        this.list = tempList;
         this.context = context;
     }
 
