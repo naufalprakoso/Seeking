@@ -26,13 +26,13 @@ public class VacancyData {
             vacancy.setPosition(data[i][0]);
             vacancy.setType(data[i][1]);
             vacancy.setLocation(data[i][2]);
-            vacancy.setSeatLeft(data[i][3]);
+            vacancy.setSeat(data[i][3]);
             vacancy.setSalary(data[i][4]);
             vacancy.setExperience(data[i][5]);
             vacancy.setLanguage(data[i][6]);
             vacancy.setCertification(data[i][7]);
             vacancy.setAdditional(data[i][8]);
-            vacancy.setJobDescription(data[i][9]);
+            vacancy.setDescription(data[i][9]);
 
             list.add(vacancy);
         }

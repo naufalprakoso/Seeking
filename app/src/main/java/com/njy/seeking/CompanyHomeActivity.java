@@ -108,13 +108,8 @@ public class CompanyHomeActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
 
         vacancies = new ArrayList<>();
-//        vacancies.addAll(VacancyData.getList());
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-//        VacancyAdapter vacancyAdapter = new VacancyAdapter(this);
-//        vacancyAdapter.setList(vacancies);
-
-//        recyclerView.setAdapter(vacancyAdapter);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait....");

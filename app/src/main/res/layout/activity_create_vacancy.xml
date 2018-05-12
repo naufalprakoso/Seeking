@@ -93,14 +93,14 @@
             android:layout_marginTop="@dimen/dimen_16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Experience Years"/>
+            android:text="Experience"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dimen_16dp"
             android:id="@+id/edt_experience_years"
-            android:hint="4 years in Java"/>
+            android:hint="Ex: 4 years in Java or have 1 Java projects"/>
 
         <TextView
             android:layout_marginTop="@dimen/dimen_16dp"

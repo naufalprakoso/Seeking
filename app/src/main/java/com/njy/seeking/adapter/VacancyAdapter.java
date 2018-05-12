@@ -57,7 +57,7 @@ public class VacancyAdapter extends RecyclerView.Adapter<VacancyAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.txtSeat.setText(getList().get(position).getSeatLeft() + " Seats left");
+        holder.txtSeat.setText(getList().get(position).getSeat() + " Seats left");
         holder.txtPosition.setText(getList().get(position).getPosition());
         holder.txtLocation.setText(getList().get(position).getLocation());
 
@@ -68,13 +68,13 @@ public class VacancyAdapter extends RecyclerView.Adapter<VacancyAdapter.ViewHold
                 i.putExtra(KEY.POSITION_KEY, getList().get(position).getPosition());
                 i.putExtra(KEY.TYPE_KEY, getList().get(position).getType());
                 i.putExtra(KEY.LOCATION_KEY, getList().get(position).getLocation());
-                i.putExtra(KEY.SEAT_LEFT_KEY, getList().get(position).getSeatLeft());
-                i.putExtra(KEY.SALARY_KEY, getList().get(position).getSalary());
+                i.putExtra(KEY.SEAT_LEFT_KEY, getList().get(position).getSeat());
+                i.putExtra(KEY.SALARY_KEY, "Rp " + getList().get(position).getSalary());
                 i.putExtra(KEY.EXPERIENCE_KEY, getList().get(position).getExperience());
                 i.putExtra(KEY.LANGUAGE_KEY, getList().get(position).getLanguage());
                 i.putExtra(KEY.CERTIFICATION_KEY, getList().get(position).getCertification());
                 i.putExtra(KEY.ADDITIONAL_KEY, getList().get(position).getAdditional());
-                i.putExtra(KEY.JOB_DESCRIPTION_KEY, getList().get(position).getJobDescription());
+                i.putExtra(KEY.JOB_DESCRIPTION_KEY, getList().get(position).getDescription());
                 context.startActivity(i);
             }
         });

@@ -5,8 +5,8 @@ package com.njy.seeking.model;
  */
 
 public class Vacancy {
-    private String position, location, seatLeft, salary,
-            experience, language, certification, additional, jobDescription, type;
+    private String position, location, seat, salary,
+            experience, language, certification, additional, description, type;
 
     public String getPosition() {
         return position;
@@ -24,12 +24,12 @@ public class Vacancy {
         this.location = location;
     }
 
-    public String getSeatLeft() {
-        return seatLeft;
+    public String getSeat() {
+        return seat;
     }
 
-    public void setSeatLeft(String seatLeft) {
-        this.seatLeft = seatLeft;
+    public void setSeat(String seatLeft) {
+        this.seat = seatLeft;
     }
 
     public String getSalary() {
@@ -72,12 +72,12 @@ public class Vacancy {
         this.additional = additional;
     }
 
-    public String getJobDescription() {
-        return jobDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setJobDescription(String jobDescription) {
-        this.jobDescription = jobDescription;
+    public void setDescription(String jobDescription) {
+        this.description = jobDescription;
     }
 
     public String getType() {
