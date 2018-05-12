@@ -23,6 +23,7 @@ public class CompanyHomeActivity extends AppCompatActivity
 
     boolean isFirstTime = false;
     SharedPreferences sharedPreferences;
+    SharedPreferences.Editor mEdit;
 
     private ImageView imgProfile;
     private TextView txtUserName, txtUserEmail;
@@ -55,14 +56,17 @@ public class CompanyHomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         sharedPreferences = getSharedPreferences(KEY.SEEKING_KEY, MODE_PRIVATE);
+        mEdit = sharedPreferences.edit();
         isFirstTime = sharedPreferences.getBoolean(KEY.FIRST_LOGIN_KEY, false);
 
         userName = sharedPreferences.getString(KEY.NAME_COMPANY_KEY, null);
         userEmail = sharedPreferences.getString(KEY.EMAIL_COMPANY_KEY, null);
 
-        imgProfile = (ImageView) findViewById(R.id.img_user);
-        txtUserName = (TextView) findViewById(R.id.txt_user_name);
-        txtUserEmail = (TextView) findViewById(R.id.txt_user_email);
+        View headerView = navigationView.getHeaderView(0);
+
+        imgProfile = (ImageView) headerView.findViewById(R.id.img_user);
+        txtUserName = (TextView) headerView.findViewById(R.id.txt_user_name);
+        txtUserEmail = (TextView) headerView.findViewById(R.id.txt_user_email);
 
         if (!isFirstTime){
             Intent i = new Intent(getApplicationContext(), LoginCompanyActivity.class);
@@ -110,7 +114,12 @@ public class CompanyHomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_help) {
 
         } else if (id == R.id.nav_logout) {
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
+            finish();
 
+            mEdit.putString(KEY.ROLE_KEY, null);
+            mEdit.putBoolean(KEY.FIRST_LOGIN_KEY, false);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

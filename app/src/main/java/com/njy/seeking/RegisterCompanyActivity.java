@@ -49,7 +49,7 @@ public class RegisterCompanyActivity extends AppCompatActivity implements View.O
                     edtEmail.setError(getString(R.string.mustBeFilled));
                 }else if (strName.length() > 35){
                     edtName.setError("Name cannot more than 35 words");
-                }else if(edtPassword != edtConfirmPassword){
+                }else if(!strPassword.equals(strConfirmPassword)){
                     edtPassword.setError("Not same with confirm password");
                 }else{
                     Intent i = new Intent(getApplicationContext(), CompleteCompanyActivity.class);

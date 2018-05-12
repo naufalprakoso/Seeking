@@ -72,6 +72,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_register"
             android:text="Next"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
             android:layout_marginTop="@dimen/dimen_16dp"/>
 
     </LinearLayout>
