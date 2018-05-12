@@ -1,5 +1,6 @@
 package com.njy.seeking;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -51,8 +52,9 @@ public class CreateVacancyActivity extends AppCompatActivity implements View.OnC
         edtJobDescription = (EditText) findViewById(R.id.edt_description);
         btnCreate = (Button) findViewById(R.id.btn_create);
 
-        sharedPreferences = getSharedPreferences(KEY.SEEKING_KEY, MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(KEY.SEEKING_KEY, Context.MODE_PRIVATE);
         mEdit = sharedPreferences.edit();
+
         getName = sharedPreferences.getString(KEY.NAME_COMPANY_KEY, null);
         getDataKey = sharedPreferences.getInt(KEY.DATA_KEY, 0);
 
@@ -85,18 +87,19 @@ public class CreateVacancyActivity extends AppCompatActivity implements View.OnC
 
                 databaseReference = firebaseDatabase.getReference();
 
-                databaseReference.child("vacancy" + getName + getDataKey).setValue(position);
-                databaseReference.child("vacancy" + getName + getDataKey).setValue(type);
-                databaseReference.child("vacancy" + getName + getDataKey).setValue(location);
-                databaseReference.child("vacancy" + getName + getDataKey).setValue(seatLeft);
-                databaseReference.child("vacancy" + getName + getDataKey).setValue(salary);
-                databaseReference.child("vacancy" + getName + getDataKey).setValue(experience);
-                databaseReference.child("vacancy" + getName + getDataKey).setValue(language);
-                databaseReference.child("vacancy" + getName + getDataKey).setValue(certification);
-                databaseReference.child("vacancy" + getName + getDataKey).setValue(additional);
-                databaseReference.child("vacancy" + getName + getDataKey).setValue(jobDescription);
+                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("position").setValue(position);
+                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("type").setValue(type);
+                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("location").setValue(location);
+                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("seat").setValue(seatLeft);
+                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("salary").setValue(salary);
+                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("experience").setValue(experience);
+                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("language").setValue(language);
+                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("certification").setValue(certification);
+                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("additional").setValue(additional);
+                databaseReference.child(getName + "").child("vacancy" + getDataKey).child("description").setValue(jobDescription);
 
-                mEdit.putInt(KEY.DATA_KEY, getDataKey++);
+                getDataKey += 1;
+                mEdit.putInt(KEY.DATA_KEY, getDataKey);
                 mEdit.commit();
 
                 Toast.makeText(this, "Create successful", Toast.LENGTH_SHORT).show();
