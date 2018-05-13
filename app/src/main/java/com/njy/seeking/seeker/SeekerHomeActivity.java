@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.njy.seeking.MainActivity;
 import com.njy.seeking.R;
+import com.njy.seeking.UserHomeActivity;
 import com.njy.seeking.data.KEY;
 
 public class SeekerHomeActivity extends AppCompatActivity
@@ -100,7 +101,7 @@ public class SeekerHomeActivity extends AppCompatActivity
                         mEdit.putBoolean(KEY.SUBMITED_KEY, false);
                         mEdit.commit();
 
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent i = new Intent(getApplicationContext(), UserHomeActivity.class);
                         startActivity(i);
                         finish();
                         break;

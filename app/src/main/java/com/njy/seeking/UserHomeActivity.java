@@ -1,16 +1,14 @@
-package com.njy.seeking.company;
+package com.njy.seeking;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,60 +18,50 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.njy.seeking.MainActivity;
-import com.njy.seeking.R;
-import com.njy.seeking.UserHomeActivity;
-import com.njy.seeking.adapter.VacancyAdapter;
+import com.njy.seeking.adapter.VacancySeekerAdapter;
+import com.njy.seeking.company.CompanyHomeActivity;
 import com.njy.seeking.data.KEY;
 import com.njy.seeking.model.Vacancy;
+import com.njy.seeking.seeker.SeekerHomeActivity;
 
 import java.util.ArrayList;
 
-public class CompanyHomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class UserHomeActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
-    boolean isFirstTime = false;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor mEdit;
-    String companyName;
-
-    private ImageView imgProfile;
-    private TextView txtUserName, txtUserEmail;
-
-    String userName, userEmail;
-
-    private RecyclerView recyclerView;
+    RecyclerView recyclerView;
     ArrayList<Vacancy> vacancies;
 
     DatabaseReference databaseReference;
     ProgressDialog progressDialog;
-    VacancyAdapter adapter;
+    VacancySeekerAdapter adapter;
+    String companyName;
 
-    DialogInterface.OnClickListener dialogClickListener;
+    SharedPreferences sharedPreferences;
+    String roleLogin;
+    boolean isFirstTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_company_home);
+        setContentView(R.layout.activity_user_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), CreateVacancyActivity.class);
-                startActivity(i);
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -85,29 +73,18 @@ public class CompanyHomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         sharedPreferences = getSharedPreferences(KEY.SEEKING_KEY, Context.MODE_PRIVATE);
-        mEdit = sharedPreferences.edit();
         isFirstTime = sharedPreferences.getBoolean(KEY.FIRST_LOGIN_KEY, false);
+        roleLogin = sharedPreferences.getString(KEY.ROLE_KEY, null);
+
+        if (isFirstTime && roleLogin.equals("Company")){
+            Intent i = new Intent(getApplicationContext(), CompanyHomeActivity.class);
+            startActivity(i);
+        }else if (isFirstTime && roleLogin.equals("Seeker")){
+            Intent i = new Intent(getApplicationContext(), SeekerHomeActivity.class);
+            startActivity(i);
+        }
 
         companyName = sharedPreferences.getString(KEY.NAME_COMPANY_KEY, null);
-
-        userName = sharedPreferences.getString(KEY.NAME_COMPANY_KEY, null);
-        userEmail = sharedPreferences.getString(KEY.EMAIL_COMPANY_KEY, null);
-
-        View headerView = navigationView.getHeaderView(0);
-
-        imgProfile = (ImageView) headerView.findViewById(R.id.img_user);
-        txtUserName = (TextView) headerView.findViewById(R.id.txt_user_name);
-        txtUserEmail = (TextView) headerView.findViewById(R.id.txt_user_email);
-
-        imgProfile.setOnClickListener(this);
-
-        if (!isFirstTime){
-            Intent i = new Intent(getApplicationContext(), LoginCompanyActivity.class);
-            startActivity(i);
-        }else{
-            txtUserName.setText(userName);
-            txtUserEmail.setText(userEmail);
-        }
 
         recyclerView = (RecyclerView) findViewById(R.id.rv_list);
         recyclerView.setHasFixedSize(true);
@@ -124,12 +101,14 @@ public class CompanyHomeActivity extends AppCompatActivity
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.child("company").child(companyName + "").getChildren()){
-                    Vacancy vacancy  = dataSnapshot.getValue(Vacancy.class);
-                    vacancies.add(vacancy);
+                for (DataSnapshot dataSnapshot : snapshot.child("company").getChildren()){
+                    for (DataSnapshot endSnapshot : dataSnapshot.getChildren()){
+                        Vacancy vacancy  = endSnapshot.getValue(Vacancy.class);
+                        vacancies.add(vacancy);
+                    }
                 }
 
-                adapter = new VacancyAdapter(CompanyHomeActivity.this, vacancies);
+                adapter = new VacancySeekerAdapter(getApplicationContext(), vacancies);
                 recyclerView.setAdapter(adapter);
                 progressDialog.dismiss();
             }
@@ -140,25 +119,6 @@ public class CompanyHomeActivity extends AppCompatActivity
             }
         });
 
-        dialogClickListener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which){
-                    case DialogInterface.BUTTON_POSITIVE:
-                        mEdit.putString(KEY.ROLE_KEY, null);
-                        mEdit.putBoolean(KEY.FIRST_LOGIN_KEY, false);
-                        mEdit.commit();
-
-                        Intent i = new Intent(getApplicationContext(), UserHomeActivity.class);
-                        startActivity(i);
-                        finish();
-                        break;
-
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        break;
-                }
-            }
-        };
     }
 
     @Override
@@ -167,13 +127,13 @@ public class CompanyHomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            finishAffinity();
+            super.onBackPressed();
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.company_home, menu);
+        getMenuInflater().inflate(R.menu.user_home, menu);
         return true;
     }
 
@@ -197,24 +157,13 @@ public class CompanyHomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_help) {
 
-        } else if (id == R.id.nav_logout) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Are you sure to logout?").setPositiveButton("Yes", dialogClickListener)
-                    .setNegativeButton("No", dialogClickListener).show();
+        } else if (id == R.id.nav_sign_up) {
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.img_user:
-                Intent i = new Intent(getApplicationContext(), UpdateCompanyProfileActivity.class);
-                startActivity(i);
-                break;
-        }
     }
 }
