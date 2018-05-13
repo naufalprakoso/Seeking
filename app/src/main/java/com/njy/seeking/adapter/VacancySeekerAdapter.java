@@ -51,7 +51,7 @@ public class VacancySeekerAdapter extends RecyclerView.Adapter<VacancySeekerAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.txtSeat.setText(getVacancies().get(position).getSeat() + " Seats left");
         holder.txtPosition.setText(getVacancies().get(position).getPosition());
-        holder.txtLocation.setText(getVacancies().get(position).getLocation());
+        holder.txtLocation.setText(getVacancies().get(position).getName());
 
 //        Glide.with(context)
 //                .load(getVacancies().get(position).)

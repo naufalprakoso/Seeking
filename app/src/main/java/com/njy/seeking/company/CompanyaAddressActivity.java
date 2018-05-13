@@ -30,7 +30,7 @@ public class CompanyaAddressActivity extends FragmentActivity implements OnMapRe
         mMap = googleMap;
 
         LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.addMarker(new MarkerOptions().position(sydney).title("This is our office"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }

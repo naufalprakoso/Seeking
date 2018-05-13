@@ -1,6 +1,7 @@
 package com.njy.seeking.seeker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.njy.seeking.ExamActivity;
 import com.njy.seeking.R;
 import com.njy.seeking.data.KEY;
 
@@ -22,12 +24,14 @@ public class VacancyDetailSeekerActivity extends AppCompatActivity {
     private TextView txtLocation, txtSalary, txtSeatsLeft,
             txtType, txtExperience, txtLanguage, txtCertification,
             txtAdditional, txtJobDescription,
-            txtQualify;
+            txtQualify, txtName, txtPosition,
+            txtCompanyDescription;
 
     String position, location, salary, seatLeft, type,
             experience, language, certification, additional, jobDescription, vacancyId, name,
             getProject, getInterested, getEmail, getName, getCertificationCompany, getCertificationId,
-            getPhone, getWebsite, getGithub, getLinkedin, getLastEducation, getWorkPeriod, getLastCompany;
+            getPhone, getWebsite, getGithub, getLinkedin, getLastEducation, getWorkPeriod, getLastCompany,
+            getCompanyDescription;
 
     int getDataApplicant;
     boolean getSubmited;
@@ -56,6 +60,9 @@ public class VacancyDetailSeekerActivity extends AppCompatActivity {
         txtAdditional = (TextView) findViewById(R.id.txt_additional);
         txtJobDescription = (TextView) findViewById(R.id.txt_job_description);
         txtQualify = (TextView) findViewById(R.id.txt_qualify);
+        txtPosition = (TextView) findViewById(R.id.txt_position);
+        txtName = (TextView) findViewById(R.id.txt_name);
+        txtCompanyDescription = (TextView) findViewById(R.id.txt_company_description);
 
         position = getIntent().getStringExtra(KEY.POSITION_KEY);
         location = getIntent().getStringExtra(KEY.LOCATION_KEY);
@@ -70,7 +77,7 @@ public class VacancyDetailSeekerActivity extends AppCompatActivity {
         vacancyId = getIntent().getStringExtra(KEY.VACANCY_ID_KEY);
         name = getIntent().getStringExtra(KEY.NAME_GET_COMPANY_KEY);
 
-        setTitle(position);
+        setTitle("Job Vacancy Detail");
 
         txtLocation.setText(location);
         txtSalary.setText(salary);
@@ -81,9 +88,8 @@ public class VacancyDetailSeekerActivity extends AppCompatActivity {
         txtCertification.setText(certification);
         txtAdditional.setText(additional);
         txtJobDescription.setText(jobDescription);
-
-//        getEmail, getName, getCertificationCompany, getCertificationId,
-//                getPhone, getWebsite, getGithub, getLinkedin, getLastEducation, getWorkPeriod, getLastCompany
+        txtPosition.setText(position);
+        txtName.setText(name);
 
         sharedPreferences = getSharedPreferences(KEY.SEEKING_KEY, Context.MODE_PRIVATE);
         mEdit = sharedPreferences.edit();
@@ -101,6 +107,9 @@ public class VacancyDetailSeekerActivity extends AppCompatActivity {
         getLastEducation = sharedPreferences.getString(KEY.LAST_EDUCATION_SEEKER_KEY, null);
         getWorkPeriod = sharedPreferences.getString(KEY.WORK_PERIOD_SEEKER_KEY, null);
         getLastCompany = sharedPreferences.getString(KEY.LAST_COMPANY_SEEKER_KEY, null);
+        getCompanyDescription = sharedPreferences.getString(KEY.DESCRIPTION_COMPANY_KEY, null);
+
+        txtCompanyDescription.setText(getCompanyDescription + "Perusahaan yang bergerak di bidang e-commerce");
 
         getDataApplicant = sharedPreferences.getInt(KEY.DATA_APPLICANT_KEY, 0);
         getSubmited = sharedPreferences.getBoolean(KEY.SUBMITED_KEY, false);
@@ -108,7 +117,16 @@ public class VacancyDetailSeekerActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
 
-        if (getInterested.contains("Android") || getProject.contains("Android")){
+        if(getInterested == null){
+            txtQualify.setText("You must login to apply this job");
+            
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(VacancyDetailSeekerActivity.this, "Login to apply this job", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else if (getInterested.contains("Android") || getProject.contains("Android")){
             txtQualify.setText("You're qualified to apply this job");
 
             fab.setOnClickListener(new View.OnClickListener() {
@@ -163,13 +181,17 @@ public class VacancyDetailSeekerActivity extends AppCompatActivity {
                 }
             });
         }else{
-            txtQualify.setText("You're not qualified to apply this job");
+            txtQualify.setText("You're not qualified to apply this job, take an exam to make yourself qualify. Click the button to take an exam.");
 
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(VacancyDetailSeekerActivity.this,
-                            "Sorry, you're not qualified to apply this job", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(VacancyDetailSeekerActivity.this,
+//                            "Process an exam", Toast.LENGTH_SHORT).show();
+
+                    Intent i = new Intent(getApplicationContext(), ExamActivity.class);
+                    startActivity(i);
+                    finish();
                 }
             });
         }
