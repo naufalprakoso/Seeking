@@ -22,34 +22,35 @@
                 android:id="@+id/img_company"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/tokopedia"
+                android:src="@drawable/udacity"
                 android:layout_gravity="center"/>
 
             <TextView
                 android:layout_marginTop="@dimen/dimen_16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/txt_position"
-                android:text="Poisition Sample"
+                android:id="@+id/txt_name"
+                android:text="Nanodegree"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@android:color/white"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/txt_location"
+                android:id="@+id/txt_organize"
                 android:textColor="@android:color/white"
                 android:layout_gravity="center"
-                android:text="Office Location Sample" />
+                android:text="Udacity" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/txt_seat"
+                android:id="@+id/txt_price"
                 android:textColor="@android:color/white"
                 android:layout_gravity="center"
-                android:text="Seat Left Sample" />
+                android:text="Rp 3.000.000" />
 
         </LinearLayout>
 

@@ -71,6 +71,8 @@ public class VacancyAdapter extends RecyclerView.Adapter<VacancyAdapter.ViewHold
                 i.putExtra(KEY.CERTIFICATION_KEY, getList().get(position).getCertification());
                 i.putExtra(KEY.ADDITIONAL_KEY, getList().get(position).getAdditional());
                 i.putExtra(KEY.JOB_DESCRIPTION_KEY, getList().get(position).getDescription());
+                i.putExtra(KEY.VACANCY_ID_KEY, getList().get(position).getVacancyid());
+                i.putExtra(KEY.NAME_GET_COMPANY_KEY, getList().get(position).getName());
                 context.startActivity(i);
             }
         });

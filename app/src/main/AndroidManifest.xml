@@ -50,7 +50,13 @@
         <activity
             android:name=".seeker.VacancyDetailSeekerActivity"
             android:label="@string/title_activity_vacancy_detail_seeker"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".seeker.CertificationDetailActivity"
+            android:label="@string/title_activity_certification_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".company.ApplicantDetailActivity" />
+        <activity android:name=".company.ApplicantActivity"></activity>
     </application>
 
 </manifest>

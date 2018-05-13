@@ -43,6 +43,14 @@ public class KEY {
     public static final String VACANCY_ID_KEY = "VacancyIdKey";
     public static final String NAME_GET_COMPANY_KEY = "NameGetCompanyKey";
 
+    public static final String NAME_CERTIFICATION_KEY = "NameCertificationKey";
+    public static final String ORGANIZE_CERTIFICATION_KEY = "OrganizeCertificationKey";
+    public static final String PRICE_CERTIFICATION_KEY = "PriceCertificationKey";
+    public static final String TEST_DATE_CERTIFICATION_KEY = "TestDateCertificationKey";
+    public static final String TEST_DESCRIPTION_CERTIFICATION_KEY = "TestDescriptionCertificationKey";
+    public static final String VENUE_CERTIFICATION_KEY = "VenueCertificationKey";
+    public static final String LANGUAGE_CERTIFICATION_KEY = "LanguageCertificationKey";
+
 //    Registration Job Seeker
     public static final String NAME_SEEKER_KEY = "SeekerName";
     public static final String PROVINCE_SEEKER_KEY = "SeekerProvince";

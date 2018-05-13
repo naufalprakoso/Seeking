@@ -1,4 +1,4 @@
-package com.njy.seeking;
+package com.njy.seeking.seeker;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.njy.seeking.R;
 import com.njy.seeking.adapter.VacancySeekerAdapter;
 import com.njy.seeking.data.KEY;
 import com.njy.seeking.model.Vacancy;
@@ -64,9 +65,11 @@ public class SeekerListVacancyFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.child("company").child(companyName + "").getChildren()){
-                    Vacancy vacancy  = dataSnapshot.getValue(Vacancy.class);
-                    vacancies.add(vacancy);
+                for (DataSnapshot dataSnapshot : snapshot.child("company").getChildren()){
+                    for (DataSnapshot endSnapshot : dataSnapshot.getChildren()){
+                        Vacancy vacancy  = endSnapshot.getValue(Vacancy.class);
+                        vacancies.add(vacancy);
+                    }
                 }
 
                 adapter = new VacancySeekerAdapter(getActivity(), vacancies);

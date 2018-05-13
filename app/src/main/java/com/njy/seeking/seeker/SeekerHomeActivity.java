@@ -1,19 +1,14 @@
 package com.njy.seeking.seeker;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -26,23 +21,9 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.njy.seeking.CertificationListFragment;
 import com.njy.seeking.MainActivity;
 import com.njy.seeking.R;
-import com.njy.seeking.SeekerListVacancyFragment;
-import com.njy.seeking.adapter.VacancyAdapter;
-import com.njy.seeking.adapter.VacancySeekerAdapter;
-import com.njy.seeking.company.CompanyHomeActivity;
-import com.njy.seeking.company.LoginCompanyActivity;
 import com.njy.seeking.data.KEY;
-import com.njy.seeking.model.Vacancy;
-
-import java.util.ArrayList;
 
 public class SeekerHomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
