@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Seeking</string>
+    <string name="app_name">Sieve</string>
 
     <!--Title-->
     <string name="titleCompanyRegistration">Company Registration</string>

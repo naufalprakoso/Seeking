@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnCompany = (LinearLayout) findViewById(R.id.btn_company);
         btnSeeker = (LinearLayout) findViewById(R.id.btn_seeker);
 
+        getSupportActionBar().hide();
+
         btnCompany.setOnClickListener(this);
         btnSeeker.setOnClickListener(this);
     }

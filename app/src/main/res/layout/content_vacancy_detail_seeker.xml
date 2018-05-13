@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="@android:color/white"
-        android:text="You're qualified to apply this job"
+        android:text=""
         android:textSize="18sp" />
 
     <ScrollView

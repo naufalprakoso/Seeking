@@ -33,6 +33,8 @@ public class VacancyDetailSeekerActivity extends AppCompatActivity {
             getPhone, getWebsite, getGithub, getLinkedin, getLastEducation, getWorkPeriod, getLastCompany,
             getCompanyDescription;
 
+    boolean isLogin;
+
     int getDataApplicant;
     boolean getSubmited;
 
@@ -127,47 +129,57 @@ public class VacancyDetailSeekerActivity extends AppCompatActivity {
                 }
             });
         } else if (getInterested.contains("Android") || getProject.contains("Android")){
-            txtQualify.setText("You're qualified to apply this job");
+            isLogin = sharedPreferences.getBoolean(KEY.FIRST_LOGIN_KEY, false);
+            if (!isLogin){
+                txtQualify.setText("You must login to apply this job");
+            }else{
+                txtQualify.setText("You're qualified to apply this job");
+            }
 
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(VacancyDetailSeekerActivity.this,
-                            "Apply successful, wait for next email. Good Luck!", Toast.LENGTH_SHORT).show();
+                    if (!isLogin){
+                        Toast.makeText(VacancyDetailSeekerActivity.this,
+                                "You must login to apply this job", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(VacancyDetailSeekerActivity.this,
+                                "Apply successful, wait for next email. Good Luck!", Toast.LENGTH_SHORT).show();
 
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("name").setValue(getName);
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("interested").setValue(getInterested);
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("project").setValue(getProject);
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("email").setValue(getEmail);
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("certificationid").setValue(getCertificationId);
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("certificationcompany").setValue(getCertificationCompany);
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("phone").setValue(getPhone);
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("website").setValue(getWebsite);
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("github").setValue(getGithub);
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("linkedin").setValue(getLinkedin);
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("lasteducation").setValue(getLastEducation);
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("workperiod").setValue(getWorkPeriod);
-                    databaseReference.child("company").child(name + "").child(vacancyId + "").
-                            child("applicants").child("applicant" + getDataApplicant).child("lastcompany").setValue(getLastCompany);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("name").setValue(getName);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("interested").setValue(getInterested);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("project").setValue(getProject);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("email").setValue(getEmail);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("certificationid").setValue(getCertificationId);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("certificationcompany").setValue(getCertificationCompany);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("phone").setValue(getPhone);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("website").setValue(getWebsite);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("github").setValue(getGithub);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("linkedin").setValue(getLinkedin);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("lasteducation").setValue(getLastEducation);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("workperiod").setValue(getWorkPeriod);
+                        databaseReference.child("company").child(name + "").child(vacancyId + "").
+                                child("applicants").child("applicant" + getDataApplicant).child("lastcompany").setValue(getLastCompany);
 
-                    getDataApplicant += 1;
-                    mEdit.putInt(KEY.DATA_APPLICANT_KEY, getDataApplicant);
-                    mEdit.putBoolean(KEY.SUBMITED_KEY, true);
-                    mEdit.commit();
+                        getDataApplicant += 1;
+                        mEdit.putInt(KEY.DATA_APPLICANT_KEY, getDataApplicant);
+                        mEdit.putBoolean(KEY.SUBMITED_KEY, true);
+                        mEdit.commit();
 
-                    finish();
+                        finish();
+                    }
                 }
             });
         }else if(getSubmited){
