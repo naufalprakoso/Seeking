@@ -12,7 +12,231 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <android.support.v7.widget.CardView
+            android:layout_marginTop="@dimen/dimen_16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_16dp"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/fj"
+                    android:id="@+id/img_user"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Naufal Prakoso"
+                    android:id="@+id/txt_name"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textSize="22sp"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_email"
+                    android:text="naufalprakoso24@gmail.com"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_phone"
+                    android:text="087870612939"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center"
+                    android:text="Interested"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_interested"
+                    android:text="Android, Java"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center"
+                    android:text="Project"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_project"
+                    android:text="CLTO, Many Android apps"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center"
+                    android:text="Certification"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_certification_company"
+                    android:text="Dicoding"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_certification_id"
+                    android:text="www.dicoding.com/users/12148"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center"
+                    android:text="GitHub"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_github"
+                    android:text="www.github.com/naufalprakoso"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_github_commit"
+                    android:text="1500 Commits"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_github_repo"
+                    android:text="13 Repositories"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center"
+                    android:text="LinkedIn"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_linkedin"
+                    android:text="www.linkedin.com/in/naufal-prakoso"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center"
+                    android:text="Website"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_website"
+                    android:text="www.naufalprakoso.blogspot.com"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center"
+                    android:text="Last Company"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_last_company_name"
+                    android:text="SLC"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_last_company_work_period"
+                    android:text="4 Years"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_marginTop="@dimen/dimen_16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_gravity="center"
+                    android:text="Last Education"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_last_education"
+                    android:text="SMK Wikrama Bogor"
+                    android:textColor="@android:color/white"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 
